@@ -12,7 +12,7 @@ const char* mqtt_server = "203.154.83.91";
 #define mqtt_port 1883
 
 WiFiClient espClient;
-PubSubClient *client = NULL; // pointer
+PubSubClient *client = NULL;
 
 long lastMsg = 0;
 char msg[50];
@@ -41,7 +41,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 boolean reconnect() {
   if (client->connect("arduinoClient")) {
     Serial.println("MQTT connected");
-    client->publish("device/outTopic", "hello world");
+    client->publish("device/outTopic", "Complete!!!");
     client->subscribe("device/inTopic");
   }
   return client->connected();
